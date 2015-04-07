@@ -1,0 +1,21 @@
+{
+  "name": "coverfly",
+  "version": "1.0.0",
+  "authors": [
+    "Jimmy Farrell <jfarrell22@gmail.com>"
+  ],
+  "main": "index.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.4",
+    "angular": "~1.3.15",
+    "angular-route": "~1.3.15"
+  }
+}

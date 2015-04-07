@@ -1,0 +1,22 @@
+{
+  "name": "coverfly",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon -e html,js,css,scss index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^0.8.2",
+    "bluebird": "^2.9.24",
+    "body-parser": "^1.12.2",
+    "express": "^4.12.3",
+    "mongoose": "^4.0.1",
+    "morgan": "^1.5.2",
+    "node-sass-middleware": "^0.5.0",
+    "request": "^2.54.0"
+  }
+}
