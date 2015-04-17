@@ -17,6 +17,6 @@ app.factory('UserFactory', function($http) {
 			.then(function(response) {
 				return response.data;
 			});
-		}
+		},
 	};
 });

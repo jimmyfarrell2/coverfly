@@ -1,4 +1,10 @@
-<h1>Sign Up</h1>
-Username: <input type="text" ng-model="userInput.username" /><br />
-Password: <input type="password" ng-model="userInput.password" /><br />
-<button ng-click="signup()">Sign Up</button>
+<form name="signupForm" ng-submit="signupForm.$valid && signup(userInput)">
+	<h1>Sign Up</h1>
+	<error ng-if="signupForm.$submitted && (signupForm.password.$error.minlength || signupForm.password.$error.maxlength)">Password must be 8 - 15 characters.</error>
+	<error ng-if="error">{{ error }}</error>
+	Username:<br />
+	<input name="username" type="text" required ng-model="userInput.username" /><br />
+	Password:<br />
+	<input name="password" type="password" required ng-minlength="8" ng-maxlength="15" ng-model="userInput.password" /><br />
+	<button>Sign Up</button>
+</form>

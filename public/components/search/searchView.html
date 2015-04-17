@@ -1,25 +1,33 @@
-<h1>Search For Song Covers</h1>
-<div class="search-form">
-	Artist: <input type="text" ng-model="userInput.artist" /><br />
-	Song: <input type="text" ng-model="userInput.song" />
-	<button ng-click="submit(userInput)">Search</button>
-</div>
-<ul class="nav nav-tabs">
-	<li role="presentation" ng-class="{ active: currentService === service }" ng-repeat="service in services"><a ng-click="setService(service)" href="">{{ service }}</a></li>
-</ul>
-<div class="results spotify-results" ng-show="currentService === 'spotify'">
-	<div class="result spotify-track" ng-repeat="track in results.spotify">
-		<p class="track-name"><a href="{{ track.external_url }}" target="_blank">{{ track.artist }}<br>{{ track.name }}</a></p>
-		<audio controls ng-src="{{ getResultUrl(track, 'spotify') }}"></audio>
+<div>
+	<h1>Search For Song Covers</h1>
+	<form name="searchForm" ng-submit="submit(userInput)">
+		Artist: <input type="text" ng-model="userInput.artist" />
+		Song: <input type="text" ng-model="userInput.song" />
+		<button>Search</button>
+	</form>
+	<ul class="nav nav-tabs search-tabs">
+		<li role="presentation" ng-class="{ active: currentService === service }" ng-repeat="service in services"><a ng-click="setService(service)" href="">{{ service | uppercase }}</a></li>
+	</ul>
+	<div class="results spotify-results" ng-show="currentService === 'spotify'">
+		<h2 ng-show="!results.spotify">No results</h2>
+		<div class="result spotify-track" ng-repeat="track in results.spotify">
+			<p class="track-name"><a href="{{ track.external_url }}" target="_blank">{{ track.artist }}<br>{{ track.name }}</a></p>
+			<audio controls ng-src="{{ getResultUrl(track, 'spotify') }}"></audio>
+			<button ng-if="user.loggedIn" ng-click="addToPlaylist(track)">Add to Playlist</button>
+		</div>
 	</div>
-</div>
-<div class="results soundcloud-results" ng-show="currentService === 'soundcloud'">
-	<div class="result soundcloud-track" ng-repeat="track in results.soundcloud">
-		<iframe width="100%" height="166" scrolling="no" frameborder="no" ng-src="{{ getResultUrl(track, 'soundcloud') }}"></iframe>
+	<div class="results soundcloud-results" ng-show="currentService === 'soundcloud'">
+		<h2 ng-show="!results.soundcloud">No results</h2>
+		<div class="result soundcloud-track" ng-repeat="track in results.soundcloud">
+			<iframe width="100%" height="166" scrolling="no" frameborder="no" ng-src="{{ getResultUrl(track, 'soundcloud') }}"></iframe>
+			<button ng-if="user.loggedIn" ng-click="addToPlaylist(track, 'soundcloud')">Add to Playlist</button>
+		</div>
 	</div>
-</div>
-<div class="results youtube-results" ng-show="currentService === 'youtube'">
-	<div class="result youtube-video" ng-repeat="video in results.youtube">
-		<iframe width="640" height="360" ng-src="{{ getResultUrl(video, 'youtube') }}" frameborder="0" allowfullscreen></iframe>
+	<div class="results youtube-results" ng-show="currentService === 'youtube'">
+		<h2 ng-show="!results.youtube">No results</h2>
+		<div class="result youtube-video" ng-repeat="video in results.youtube">
+			<iframe width="640" height="360" ng-src="{{ getResultUrl(video, 'youtube') }}" frameborder="0" allowfullscreen></iframe>
+			<button ng-if="user.loggedIn" ng-click="addToPlaylist(video)">Add to Playlist</button>
+		</div>
 	</div>
 </div>

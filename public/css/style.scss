@@ -1,8 +1,47 @@
+$sidebar-color: gray;
+
 body {
-	padding-top: 70px;
+	padding-top: 50px;
 	text-align: center;
 }
 
 nav .glyph-logo {
 	margin-right: 10px;
+}
+
+button {
+	margin-top: 10px;
+}
+
+ul {
+	padding: 0;
+	list-style-type: none;
+}
+
+.playlist-list {
+	text-align: left;
+}
+
+.playlist-list {
+	cursor: default;
+}
+
+.sidebar {
+	text-align: left;
+	height: 100vh;
+	background: $sidebar-color;
+}
+
+.nav-tabs, .nav-pills {
+	text-align: center;
+	margin-top: 20px;
+	margin-bottom: 20px;
+    li {
+    	float: none;
+    	display: inline-block;
+    }
+}
+
+.result {
+	margin: 20px 0;
 }

@@ -1,25 +1,35 @@
-app.config(function($routeProvider, $locationProvider) {
-	$routeProvider
+app.config(function($stateProvider, $locationProvider) {
+	$stateProvider
 
-	.when('/', {
+	.state('home', {
+		url: '/',
 		templateUrl: 'components/search/searchView.html',
 		controller: 'SearchController'
 	})
 
-	.when('/home', {
-		templateUrl: 'components/users/homeView.html',
-		controller: 'HomeController'
-	})
-
-	.when('/login', {
+	.state('login', {
+		url: '/login',
     	templateUrl: 'components/users/loginView.html',
     	controller: 'LoginController'
 	})
-	
-	.when('/signup', {
+
+	.state('logout', {
+		url: '/logout',
+    	templateUrl: 'components/users/loginView.html',
+    	controller: 'LoginController'
+	})
+
+	.state('signup', {
+		url: '/signup',
 		templateUrl: 'components/users/signupView.html',
 		controller: 'SignupController'
 	});
+
+	// $stateProvider.state('user', {
+	// 	url: '/:username',
+	// 	templateUrl: 'components/search/searchView.html',
+	// 	controller: 'SearchController'
+	// });
 
 	$locationProvider.html5Mode(true);
 });

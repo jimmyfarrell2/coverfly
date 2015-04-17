@@ -1,0 +1,12 @@
+<div id="sidebar">
+	<h2>Hi, {{ user.userInfo.username }}</h2>
+	<h3>Your Playlists</h3>
+	<div class="playlist-list">
+		<div ng-repeat="playlist in user.userInfo.playlists" ng-click="loadPlaylist(playlist)">
+			<h4 class="playlist-name">{{ playlist.name }}</h4>
+			<ul ng-if="playlist === current.playlist">
+				<li ng-repeat="song in playlist.songs">{{ song.title }} - {{ song.artist }}</li>
+			</ul>
+		</div>
+	</div>
+</div>

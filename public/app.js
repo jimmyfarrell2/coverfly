@@ -1,1 +1,1 @@
-var app = angular.module('Coverfly', ['ngRoute']);
+var app = angular.module('Coverfly', ['ui.router']);
